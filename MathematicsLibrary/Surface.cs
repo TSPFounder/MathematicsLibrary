@@ -120,8 +120,9 @@ namespace Mathematics
             }
 
             // Close loop if needed
-            if (!ReferenceEquals(Perimeter.Last().EndPoint, verts.First()))
-                verts.Add(Perimeter.Last().EndPoint);
+            var lastEndPoint = Perimeter.Last().EndPoint;
+            if (lastEndPoint is not null && !ReferenceEquals(lastEndPoint, verts.First()))
+                verts.Add(lastEndPoint);
 
             // Basic validation
             if (verts.Count < 3 || verts.Any(v => v is null)) return false;
