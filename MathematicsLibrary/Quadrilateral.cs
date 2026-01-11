@@ -39,7 +39,7 @@ namespace Mathematics
         // Identification
         // -----------------------------
         public string? QuadrilateralID { get; set; }
-        public string? Name { get; set; }
+        public new string? Name { get; set; }
         public string? Description { get; set; }
 
         // -----------------------------
@@ -180,6 +180,8 @@ namespace Mathematics
         // -----------------------------
         private static double Length2(Segment s)
         {
+            if (s?.StartPoint is null || s.EndPoint is null)
+                return 0.0;
             var dx = s.EndPoint.X_Value - s.StartPoint.X_Value;
             var dy = s.EndPoint.Y_Value - s.StartPoint.Y_Value;
             var dz = s.EndPoint.Z_Value_Cartesian - s.StartPoint.Z_Value_Cartesian;
@@ -188,6 +190,8 @@ namespace Mathematics
 
         private static bool Parallel(Segment a, Segment b, double tol)
         {
+            if (a?.StartPoint is null || a.EndPoint is null || b?.StartPoint is null || b.EndPoint is null)
+                return false;
             // Compare normalized cross product magnitude in XY (planar assumption).
             var ax = a.EndPoint.X_Value - a.StartPoint.X_Value;
             var ay = a.EndPoint.Y_Value - a.StartPoint.Y_Value;
@@ -218,6 +222,9 @@ namespace Mathematics
 
         private static bool SegmentsIntersectXY(Segment a, Segment b, double tol)
         {
+            if (a?.StartPoint is null || a.EndPoint is null || b?.StartPoint is null || b.EndPoint is null)
+                return false;
+            
             // Exclude shared endpoints by tolerance
             bool ShareEndpoint(Point p, Point q)
                 => Math.Abs(p.X_Value - q.X_Value) <= tol && Math.Abs(p.Y_Value - q.Y_Value) <= tol;

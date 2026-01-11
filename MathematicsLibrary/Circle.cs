@@ -40,7 +40,7 @@ namespace Mathematics
         public double Radius { get; set; }
 
         /// <summary>2D center point of the circle.</summary>
-        public Point CenterPoint { get; set; }
+        public new Point CenterPoint { get; set; }
 
         // ------------------------------------------------------------
         // Helpers / Geometry

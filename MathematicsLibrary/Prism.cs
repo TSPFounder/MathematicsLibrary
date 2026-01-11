@@ -72,7 +72,7 @@ namespace Mathematics
         // ------------------------------------------------------------------
 
         /// <summary>Geometric center (reference) of the prism.</summary>
-        public Point CenterPoint { get; set; } = new Point();
+        public new Point CenterPoint { get; set; } = new Point();
 
         // ------------------------------------------------------------------
         // Validation / Utilities

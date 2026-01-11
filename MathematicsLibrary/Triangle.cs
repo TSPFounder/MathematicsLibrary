@@ -70,7 +70,7 @@ namespace Mathematics
             set => _triangleId = value;
         }
 
-        public string? Name
+        public new string? Name
         {
             get => _name;
             set => _name = value;

@@ -35,7 +35,7 @@ namespace Mathematics
         // ------------------------------------------------------------------
         // Location
         // ------------------------------------------------------------------
-        public Point CenterPoint { get; set; } = new Point();
+        public new Point CenterPoint { get; set; } = new Point();
 
         // ------------------------------------------------------------------
         // Derived quantities (pure functions; do not mutate state)
