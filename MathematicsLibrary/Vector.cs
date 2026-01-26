@@ -121,30 +121,64 @@ namespace Mathematics
             };
         }
 
-        /// <summary>Returns a normalized Cartesian vector. If zero, returns a copy.</summary>
+        /// <summary>
+        /// Returns a unit (normalized) Cartesian vector.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if the vector is not Cartesian.
+        /// </exception>
         public Vector Normalize()
         {
-            // Convert magnitude for Cartesian representation
             if (VectorType != VectorTypeEnum.Cartesian)
-                return this; // Keep simple; conversions can be added if needed
+                throw new InvalidOperationException("Normalize requires a Cartesian vector.");
 
             var len = Length;
-            if (len <= 0) return FromCartesian(X_Value, Y_Value, Z_Value);
+            if (len <= 0)
+                throw new InvalidOperationException("Cannot normalize a zero-length vector.");
 
-            return FromCartesian(X_Value / len, Y_Value / len, Z_Value / len);
+            return FromCartesian(
+                X_Value / len,
+                Y_Value / len,
+                Z_Value / len
+            );
         }
 
-        /// <summary>Dot product (expects both vectors in Cartesian form).</summary>
+        /// <summary>
+        /// Dot product of two Cartesian vectors.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="ArgumentException">
+        /// Thrown if either vector is not Cartesian.
+        /// </exception>
         public static double Dot(Vector a, Vector b)
         {
-            if (a is null || b is null) throw new ArgumentNullException();
-            return a.X_Value * b.X_Value + a.Y_Value * b.Y_Value + a.Z_Value * b.Z_Value;
+            if (a is null) throw new ArgumentNullException(nameof(a));
+            if (b is null) throw new ArgumentNullException(nameof(b));
+
+            if (a.VectorType != VectorTypeEnum.Cartesian)
+                throw new ArgumentException("Dot product requires Cartesian vectors.", nameof(a));
+
+            if (b.VectorType != VectorTypeEnum.Cartesian)
+                throw new ArgumentException("Dot product requires Cartesian vectors.", nameof(b));
+
+            return a.X_Value * b.X_Value
+                 + a.Y_Value * b.Y_Value
+                 + a.Z_Value * b.Z_Value;
         }
 
         /// <summary>Cross product (expects both vectors in Cartesian form).</summary>
         public static Vector Cross(Vector a, Vector b)
         {
-            if (a is null || b is null) throw new ArgumentNullException();
+            if (a is null) throw new ArgumentNullException(nameof(a));
+            if (b is null) throw new ArgumentNullException(nameof(b));
+
+            if (a.VectorType != VectorTypeEnum.Cartesian)
+                throw new ArgumentException("Cross product requires Cartesian vectors.", nameof(a));
+
+            if (b.VectorType != VectorTypeEnum.Cartesian)
+                throw new ArgumentException("Cross product requires Cartesian vectors.", nameof(b));
+
             return FromCartesian(
                 a.Y_Value * b.Z_Value - a.Z_Value * b.Y_Value,
                 a.Z_Value * b.X_Value - a.X_Value * b.Z_Value,
@@ -157,4 +191,3 @@ namespace Mathematics
                $"Cart=({X_Value:F3},{Y_Value:F3},{Z_Value:F3}))";
     }
 }
-

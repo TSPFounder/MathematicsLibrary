@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\plane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\plane.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\vector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\vector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\coordinatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\coordinatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\prism.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\prism.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\circle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\circle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\surface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\surface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\sphere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\sphere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\cone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\cone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,20 +43,8 @@
       "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\torus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\surface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\surface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\sphere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\sphere.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\segment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\segment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\prism.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\prism.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\primitive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,14 +67,6 @@
       "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\cylinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\coordinatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\coordinatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\circle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\circle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|d:\\dreamworldmaker\\projects\\dotnet\\mathematicslibrary\\mathematicslibrary\\mathematicslibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E47244FB-FFE9-A8FF-A38C-C89655994A87}|MathematicsLibrary\\MathematicsLibrary.csproj|solutionrelative:mathematicslibrary\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -70,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -81,16 +89,33 @@
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Plane.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Plane.cs",
+              "RelativeDocumentMoniker": "MathematicsLibrary\\Plane.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Plane.cs",
+              "RelativeToolTip": "MathematicsLibrary\\Plane.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAkwB0AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T00:12:01.046Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Vector.cs",
+              "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Vector.cs",
+              "RelativeDocumentMoniker": "MathematicsLibrary\\Vector.cs",
+              "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Vector.cs",
+              "RelativeToolTip": "MathematicsLibrary\\Vector.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAI0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T00:08:50.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Triangle.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Triangle.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Triangle.cs",
@@ -102,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "Torus.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Torus.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Torus.cs",
@@ -114,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Surface.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Surface.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Surface.cs",
@@ -126,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Sphere.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Sphere.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Sphere.cs",
@@ -138,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "Segment.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Segment.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Segment.cs",
@@ -150,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Prism.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Prism.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Prism.cs",
@@ -162,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "Primitive.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Primitive.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Primitive.cs",
@@ -174,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "Point.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Point.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Point.cs",
@@ -186,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "MeshElement.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\MeshElement.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\MeshElement.cs",
@@ -198,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Mesh.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Mesh.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Mesh.cs",
@@ -210,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Cylinder.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Cylinder.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Cylinder.cs",
@@ -222,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 2,
               "Title": "CoordinateSystem.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\CoordinateSystem.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\CoordinateSystem.cs",
@@ -234,20 +259,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "Cone.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Cone.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Cone.cs",
               "ToolTip": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Cone.cs",
               "RelativeToolTip": "MathematicsLibrary\\Cone.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T18:58:45.659Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T18:58:45.659Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 4,
               "Title": "Circle.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Circle.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Circle.cs",
@@ -259,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\DreamWorldMaker\\Projects\\DotNet\\MathematicsLibrary\\MathematicsLibrary\\MathematicsLibrary\\Class1.cs",
               "RelativeDocumentMoniker": "MathematicsLibrary\\Class1.cs",
