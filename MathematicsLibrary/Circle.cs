@@ -18,7 +18,7 @@ namespace Mathematics
         {
             Is2D = true;
             TwoDType = TwoDPrimitiveTypeEnum.Circle;
-            CenterPoint = new Point();
+            CenterPoint = new Point(0, 0, 0);
         }
 
         public Circle(Point center, double radius)
@@ -40,7 +40,7 @@ namespace Mathematics
         public double Radius { get; set; }
 
         /// <summary>2D center point of the circle.</summary>
-        public Point CenterPoint { get; set; }
+        public new Point CenterPoint { get; set; }
 
         // ------------------------------------------------------------
         // Helpers / Geometry

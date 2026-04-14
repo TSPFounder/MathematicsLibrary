@@ -9,7 +9,7 @@ namespace Mathematics
     public class Point
     {
         // -----------------------------
-        // Types (unchanged)
+        // Types
         // -----------------------------
         public enum PointTypeEnum
         {
@@ -20,43 +20,79 @@ namespace Mathematics
         }
 
         // -----------------------------
-        // Constructors / factories
+        // Constructors
         // -----------------------------
-        public Point()
+
+        /// <summary>
+        /// Creates a Cartesian point at (x, y, z).
+        /// </summary>
+        public Point(double x, double y, double z = 0.0)
+            : this(PointTypeEnum.Cartesian, x, y, z) { }
+
+        /// <summary>
+        /// Creates a point of the specified coordinate type with position values.
+        /// <list type="bullet">
+        ///   <item><b>Cartesian</b>: coord1 = x, coord2 = y, coord3 = z</item>
+        ///   <item><b>Cylindrical</b>: coord1 = r, coord2 = θ (radians), coord3 = z</item>
+        ///   <item><b>Spherical</b>: coord1 = r, coord2 = θ (radians), coord3 = φ (radians)</item>
+        ///   <item><b>Complex</b>: coord1 = real, coord2 = imaginary, coord3 unused</item>
+        /// </list>
+        /// </summary>
+        public Point(PointTypeEnum type, double coord1, double coord2, double coord3 = 0.0)
         {
+            MyType = type;
             MyCoordinateSystems = new List<CoordinateSystem>();
             MyConnectedPoints = new List<Point>();
+
+            switch (type)
+            {
+                case PointTypeEnum.Cartesian:
+                    X_Value = coord1;
+                    Y_Value = coord2;
+                    Z_Value_Cartesian = coord3;
+                    Is2D = coord3 == 0.0;
+                    break;
+
+                case PointTypeEnum.Cylindrical:
+                    R_Value_Cylindrical = coord1;
+                    Theta_Value_Cylindrical = coord2;
+                    Z_Value_Cylindrical = coord3;
+                    Is2D = coord3 == 0.0;
+                    break;
+
+                case PointTypeEnum.Spherical:
+                    R_Value_Spherical = coord1;
+                    Theta_Value_Spherical = coord2;
+                    Phi_Value = coord3;
+                    Is2D = false;
+                    break;
+
+                case PointTypeEnum.Complex:
+                    Real_Value = coord1;
+                    Complex_Value = coord2;
+                    Is2D = true;
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, "Unknown point type.");
+            }
         }
 
+        // -----------------------------
+        // Factories (convenience wrappers)
+        // -----------------------------
+
         public static Point FromCartesian(double x, double y, double z = 0.0)
-            => new Point
-            {
-                MyType = PointTypeEnum.Cartesian,
-                X_Value = x,
-                Y_Value = y,
-                Z_Value_Cartesian = z,
-                Is2D = z == 0.0
-            };
+            => new Point(PointTypeEnum.Cartesian, x, y, z);
 
         public static Point FromCylindrical(double r, double thetaRadians, double z = 0.0)
-            => new Point
-            {
-                MyType = PointTypeEnum.Cylindrical,
-                R_Value_Cylindrical = r,
-                Theta_Value_Cylindrical = thetaRadians,
-                Z_Value_Cylindrical = z,
-                Is2D = z == 0.0
-            };
+            => new Point(PointTypeEnum.Cylindrical, r, thetaRadians, z);
 
         public static Point FromSpherical(double r, double thetaRadians, double phiRadians)
-            => new Point
-            {
-                MyType = PointTypeEnum.Spherical,
-                R_Value_Spherical = r,
-                Theta_Value_Spherical = thetaRadians,
-                Phi_Value = phiRadians,
-                Is2D = false
-            };
+            => new Point(PointTypeEnum.Spherical, r, thetaRadians, phiRadians);
+
+        public static Point FromComplex(double real, double imaginary)
+            => new Point(PointTypeEnum.Complex, real, imaginary);
 
         // -----------------------------
         // Identification
@@ -67,7 +103,7 @@ namespace Mathematics
         // -----------------------------
         // Kind / flags
         // -----------------------------
-        public PointTypeEnum MyType { get; set; } = PointTypeEnum.Cartesian;
+        public PointTypeEnum MyType { get; set; }
         public bool Is2D { get; set; }
 
         // -----------------------------
@@ -142,7 +178,7 @@ namespace Mathematics
 
                 X_Value = r * Math.Cos(thetaRadians) * Math.Sin(phiRadians);
                 Y_Value = r * Math.Sin(thetaRadians) * Math.Sin(phiRadians);
-                Z_Value_Cartesian = r * Math.Cos(phiRadians); // fixed: cos(phi) for Z
+                Z_Value_Cartesian = r * Math.Cos(phiRadians);
                 return true;
             }
             catch { return false; }
@@ -156,7 +192,7 @@ namespace Mathematics
                 if (MyType != PointTypeEnum.Cartesian) return false;
 
                 R_Value_Cylindrical = Math.Sqrt(x * x + y * y);
-                Theta_Value_Cylindrical = Math.Atan2(y, x);    // fixed: use atan2
+                Theta_Value_Cylindrical = Math.Atan2(y, x);
                 Z_Value_Cylindrical = Z_Value_Cartesian;
                 return true;
             }
@@ -186,8 +222,7 @@ namespace Mathematics
                 if (MyType != PointTypeEnum.Cartesian) return false;
 
                 R_Value_Spherical = Math.Sqrt(x * x + y * y + z * z);
-                Theta_Value_Spherical = Math.Atan2(y, x);        // azimuth
-                // φ = atan2(ρ, z) with ρ = sqrt(x^2 + y^2)
+                Theta_Value_Spherical = Math.Atan2(y, x);
                 Phi_Value = Math.Atan2(Math.Sqrt(x * x + y * y), z);
                 return true;
             }
@@ -202,7 +237,7 @@ namespace Mathematics
                 if (MyType != PointTypeEnum.Cylindrical) return false;
 
                 R_Value_Spherical = Math.Sqrt(r * r + z * z);
-                Phi_Value = Math.Atan2(r, z);                    // polar from +Z
+                Phi_Value = Math.Atan2(r, z);
                 Theta_Value_Spherical = Theta_Value_Cylindrical;
                 return true;
             }

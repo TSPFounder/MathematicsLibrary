@@ -18,7 +18,7 @@ namespace Mathematics
         {
             Is2D = false;
             ThreeDType = ThreeDPrimitiveTypeEnum.Sphere;
-            CenterPoint = new Point();
+            CenterPoint = new Point(0, 0, 0);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Mathematics
         /// <summary>
         /// Sphere center point in 3-D space.
         /// </summary>
-        public Point CenterPoint { get; set; }
+        public new Point CenterPoint { get; set; }
 
         /// <summary>
         /// Sphere radius; must be non-negative.

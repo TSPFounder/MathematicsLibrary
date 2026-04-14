@@ -9,7 +9,7 @@ namespace Mathematics
     public class Vector
     {
         // -----------------------------
-        // Types (unchanged)
+        // Types
         // -----------------------------
         public enum VectorTypeEnum
         {
@@ -28,22 +28,28 @@ namespace Mathematics
             CurrentCoordinateSystem = WorldCoordinateSystem;
         }
 
-        public Vector(Point startCartesianPoint, Point endCartesianPoint) : this()
+        /// <summary>
+        /// Create a Cartesian vector from two points of any coordinate type.
+        /// The vector components are computed as (end − start) in Cartesian space,
+        /// so the points do not need to be at the origin.
+        /// </summary>
+        public Vector(Point startPoint, Point endPoint) : this()
         {
-            if (startCartesianPoint is null) throw new ArgumentNullException(nameof(startCartesianPoint));
-            if (endCartesianPoint is null) throw new ArgumentNullException(nameof(endCartesianPoint));
+            if (startPoint is null) throw new ArgumentNullException(nameof(startPoint));
+            if (endPoint is null) throw new ArgumentNullException(nameof(endPoint));
 
-            StartPoint = startCartesianPoint;
-            EndPoint = endCartesianPoint;
+            StartPoint = startPoint;
+            EndPoint = endPoint;
 
-            // Components (fixed: Z used X before)
-            X_Value = endCartesianPoint.X_Value - startCartesianPoint.X_Value;
-            Y_Value = endCartesianPoint.Y_Value - startCartesianPoint.Y_Value;
-            Z_Value = endCartesianPoint.Z_Value_Cartesian - startCartesianPoint.Z_Value_Cartesian;
+            // Convert both points to Cartesian regardless of their native type
+            var (sx, sy, sz) = PointToCartesian(startPoint);
+            var (ex, ey, ez) = PointToCartesian(endPoint);
+
+            X_Value = ex - sx;
+            Y_Value = ey - sy;
+            Z_Value = ez - sz;
 
             VectorType = VectorTypeEnum.Cartesian;
-
-            // Set a baseline “direction” into WCS for reference
             WorldCoordinateSystem.BaseVector ??= this;
         }
 
@@ -51,13 +57,19 @@ namespace Mathematics
         public static Vector FromCartesian(double x, double y, double z = 0) =>
             new Vector { VectorType = VectorTypeEnum.Cartesian, X_Value = x, Y_Value = y, Z_Value = z };
 
-        /// <summary>Create a Cylindrical/Polar vector (r,θ,z).</summary>
+        /// <summary>Create a Cylindrical vector (r, θ, z).</summary>
         public static Vector FromCylindrical(double r, double thetaRadians, double z = 0) =>
             new Vector { VectorType = VectorTypeEnum.Cylindrical, Cyl_R = r, Cyl_Theta = thetaRadians, L = z };
 
-        /// <summary>Create a Spherical vector (R,θ,φ). θ=azimuth, φ=polar angle from +Z.</summary>
+        /// <summary>Create a Spherical vector (R, θ, φ). θ = azimuth, φ = polar angle from +Z.</summary>
         public static Vector FromSpherical(double r, double thetaRadians, double phiRadians) =>
             new Vector { VectorType = VectorTypeEnum.Spherical, Sph_R = r, Sph_Theta = thetaRadians, Phi = phiRadians };
+
+        /// <summary>
+        /// Create a Cartesian vector from two points of any coordinate type.
+        /// Equivalent to <c>new Vector(start, end)</c>.
+        /// </summary>
+        public static Vector FromPoints(Point start, Point end) => new Vector(start, end);
 
         // -----------------------------
         // Identification
@@ -75,26 +87,26 @@ namespace Mathematics
         // -----------------------------
         // Cartesian components
         // -----------------------------
-        public double X_Value { get; set; }
-        public double Y_Value { get; set; }
-        public double Z_Value { get; set; }
+        public double? X_Value { get; set; }
+        public double? Y_Value { get; set; }
+        public double? Z_Value { get; set; }
 
         // -----------------------------
-        // Cylindrical / Polar (r,θ,z or r,θ,L)
+        // Cylindrical / Polar (r, θ, z)
         // -----------------------------
-        public double Cyl_R { get; set; }
+        public double? Cyl_R { get; set; }
         /// <summary>Azimuth angle θ (radians).</summary>
-        public double Cyl_Theta { get; set; }
+        public double? Cyl_Theta { get; set; }
         /// <summary>Axial component (z or L depending on usage).</summary>
-        public double L { get; set; }
+        public double? L { get; set; }
 
         // -----------------------------
-        // Spherical (R,θ,φ)
+        // Spherical (R, θ, φ)
         // θ: azimuth about +Z from +X; φ: polar angle from +Z
         // -----------------------------
-        public double Sph_R { get; set; }
-        public double Sph_Theta { get; set; }
-        public double Phi { get; set; }
+        public double? Sph_R { get; set; }
+        public double? Sph_Theta { get; set; }
+        public double? Phi { get; set; }
 
         // -----------------------------
         // Ownership / context
@@ -106,88 +118,171 @@ namespace Mathematics
         public CoordinateSystem? CurrentCoordinateSystem { get; set; }
 
         // -----------------------------
-        // Methods
+        // Coordinate helpers
         // -----------------------------
-        /// <summary>Compute the vector length based on its coordinate representation.</summary>
-        public double GetVectorLength()
+
+        /// <summary>
+        /// Convert any <see cref="Point"/> to Cartesian (x, y, z) regardless of its native type.
+        /// </summary>
+        public static (double X, double Y, double Z) PointToCartesian(Point p)
         {
-            return VectorType switch
+            if (p is null) throw new ArgumentNullException(nameof(p));
+
+            return p.MyType switch
             {
-                VectorTypeEnum.Cartesian => Math.Sqrt(X_Value * X_Value + Y_Value * Y_Value + Z_Value * Z_Value),
-                VectorTypeEnum.Cylindrical => Math.Sqrt(Cyl_R * Cyl_R + L * L),
-                VectorTypeEnum.Spherical => Math.Abs(Sph_R),
-                VectorTypeEnum.Polar => Math.Abs(L),
-                _ => Math.Sqrt(X_Value * X_Value + Y_Value * Y_Value + Z_Value * Z_Value)
+                Point.PointTypeEnum.Cartesian => (
+                    p.X_Value,
+                    p.Y_Value,
+                    p.Z_Value_Cartesian
+                ),
+
+                Point.PointTypeEnum.Cylindrical => (
+                    p.R_Value_Cylindrical * Math.Cos(p.Theta_Value_Cylindrical),
+                    p.R_Value_Cylindrical * Math.Sin(p.Theta_Value_Cylindrical),
+                    p.Z_Value_Cylindrical
+                ),
+
+                Point.PointTypeEnum.Spherical => (
+                    p.R_Value_Spherical * Math.Sin(p.Phi_Value) * Math.Cos(p.Theta_Value_Spherical),
+                    p.R_Value_Spherical * Math.Sin(p.Phi_Value) * Math.Sin(p.Theta_Value_Spherical),
+                    p.R_Value_Spherical * Math.Cos(p.Phi_Value)
+                ),
+
+                _ => (p.X_Value, p.Y_Value, p.Z_Value_Cartesian)
             };
         }
 
         /// <summary>
-        /// Returns a unit (normalized) Cartesian vector.
+        /// Derive Cartesian (x, y, z) components for this vector.
+        /// <list type="bullet">
+        ///   <item>If <see cref="StartPoint"/> and <see cref="EndPoint"/> are both set,
+        ///         components are re-derived as (end − start) from the points' native coordinates.</item>
+        ///   <item>Otherwise, the vector's own coordinate properties are converted
+        ///         from the native <see cref="VectorType"/> to Cartesian.</item>
+        /// </list>
         /// </summary>
-        /// <exception cref="ArgumentNullException"/>
         /// <exception cref="InvalidOperationException">
-        /// Thrown if the vector is not Cartesian.
+        /// Thrown when the required coordinate properties for the current
+        /// <see cref="VectorType"/> have not been set (are null).
         /// </exception>
-        public Vector Normalize()
+        public (double X, double Y, double Z) ToCartesianComponents()
         {
-            if (VectorType != VectorTypeEnum.Cartesian)
-                throw new InvalidOperationException("Normalize requires a Cartesian vector.");
+            // When defined by two points, always re-derive from the points.
+            if (StartPoint is not null && EndPoint is not null)
+            {
+                var (sx, sy, sz) = PointToCartesian(StartPoint);
+                var (ex, ey, ez) = PointToCartesian(EndPoint);
+                return (ex - sx, ey - sy, ez - sz);
+            }
 
-            var len = Length;
-            if (len <= 0)
-                throw new InvalidOperationException("Cannot normalize a zero-length vector.");
+            // Fall back to converting the vector's own stored coordinates.
+            return VectorType switch
+            {
+                VectorTypeEnum.Cartesian => (
+                    X_Value ?? throw new InvalidOperationException("X_Value is not set for Cartesian vector."),
+                    Y_Value ?? throw new InvalidOperationException("Y_Value is not set for Cartesian vector."),
+                    Z_Value ?? 0.0
+                ),
 
-            return FromCartesian(
-                X_Value / len,
-                Y_Value / len,
-                Z_Value / len
-            );
+                VectorTypeEnum.Cylindrical => CartesianFromCylindrical(
+                    Cyl_R ?? throw new InvalidOperationException("Cyl_R is not set for Cylindrical vector."),
+                    Cyl_Theta ?? throw new InvalidOperationException("Cyl_Theta is not set for Cylindrical vector."),
+                    L ?? 0.0
+                ),
+
+                VectorTypeEnum.Spherical => CartesianFromSpherical(
+                    Sph_R ?? throw new InvalidOperationException("Sph_R is not set for Spherical vector."),
+                    Sph_Theta ?? throw new InvalidOperationException("Sph_Theta is not set for Spherical vector."),
+                    Phi ?? throw new InvalidOperationException("Phi is not set for Spherical vector.")
+                ),
+
+                VectorTypeEnum.Polar => CartesianFromCylindrical(
+                    Cyl_R ?? throw new InvalidOperationException("Cyl_R is not set for Polar vector."),
+                    Cyl_Theta ?? throw new InvalidOperationException("Cyl_Theta is not set for Polar vector."),
+                    0.0
+                ),
+
+                _ => (X_Value ?? 0.0, Y_Value ?? 0.0, Z_Value ?? 0.0)
+            };
+        }
+
+        // -----------------------------
+        // Conversion helpers
+        // -----------------------------
+
+        private static (double X, double Y, double Z) CartesianFromCylindrical(double r, double theta, double z)
+            => (r * Math.Cos(theta), r * Math.Sin(theta), z);
+
+        private static (double X, double Y, double Z) CartesianFromSpherical(double r, double theta, double phi)
+            => (r * Math.Sin(phi) * Math.Cos(theta),
+                r * Math.Sin(phi) * Math.Sin(theta),
+                r * Math.Cos(phi));
+
+        // -----------------------------
+        // Methods
+        // -----------------------------
+
+        /// <summary>
+        /// Compute vector length from correctly derived Cartesian components.
+        /// </summary>
+        public double GetVectorLength()
+        {
+            var (x, y, z) = ToCartesianComponents();
+            return Math.Sqrt(x * x + y * y + z * z);
         }
 
         /// <summary>
-        /// Dot product of two Cartesian vectors.
+        /// Returns a unit (normalized) Cartesian vector.
+        /// Works for any vector type by converting to Cartesian first.
         /// </summary>
-        /// <exception cref="ArgumentNullException"/>
-        /// <exception cref="ArgumentException">
-        /// Thrown if either vector is not Cartesian.
-        /// </exception>
+        public Vector Normalize()
+        {
+            var (x, y, z) = ToCartesianComponents();
+            var len = Math.Sqrt(x * x + y * y + z * z);
+
+            if (len <= 0)
+                throw new InvalidOperationException("Cannot normalize a zero-length vector.");
+
+            return FromCartesian(x / len, y / len, z / len);
+        }
+
+        /// <summary>
+        /// Dot product. Works for any vector type by converting to Cartesian first.
+        /// </summary>
         public static double Dot(Vector a, Vector b)
         {
             if (a is null) throw new ArgumentNullException(nameof(a));
             if (b is null) throw new ArgumentNullException(nameof(b));
 
-            if (a.VectorType != VectorTypeEnum.Cartesian)
-                throw new ArgumentException("Dot product requires Cartesian vectors.", nameof(a));
+            var (ax, ay, az) = a.ToCartesianComponents();
+            var (bx, by, bz) = b.ToCartesianComponents();
 
-            if (b.VectorType != VectorTypeEnum.Cartesian)
-                throw new ArgumentException("Dot product requires Cartesian vectors.", nameof(b));
-
-            return a.X_Value * b.X_Value
-                 + a.Y_Value * b.Y_Value
-                 + a.Z_Value * b.Z_Value;
+            return ax * bx + ay * by + az * bz;
         }
 
-        /// <summary>Cross product (expects both vectors in Cartesian form).</summary>
+        /// <summary>
+        /// Cross product. Works for any vector type by converting to Cartesian first.
+        /// </summary>
         public static Vector Cross(Vector a, Vector b)
         {
             if (a is null) throw new ArgumentNullException(nameof(a));
             if (b is null) throw new ArgumentNullException(nameof(b));
 
-            if (a.VectorType != VectorTypeEnum.Cartesian)
-                throw new ArgumentException("Cross product requires Cartesian vectors.", nameof(a));
-
-            if (b.VectorType != VectorTypeEnum.Cartesian)
-                throw new ArgumentException("Cross product requires Cartesian vectors.", nameof(b));
+            var (ax, ay, az) = a.ToCartesianComponents();
+            var (bx, by, bz) = b.ToCartesianComponents();
 
             return FromCartesian(
-                a.Y_Value * b.Z_Value - a.Z_Value * b.Y_Value,
-                a.Z_Value * b.X_Value - a.X_Value * b.Z_Value,
-                a.X_Value * b.Y_Value - a.Y_Value * b.X_Value
+                ay * bz - az * by,
+                az * bx - ax * bz,
+                ax * by - ay * bx
             );
         }
 
         public override string ToString()
-            => $"Vector(Name={Name ?? "<unnamed>"}, Type={VectorType}, Len={Length:F6}, " +
-               $"Cart=({X_Value:F3},{Y_Value:F3},{Z_Value:F3}))";
+        {
+            var (x, y, z) = ToCartesianComponents();
+            return $"Vector(Name={Name ?? "<unnamed>"}, Type={VectorType}, Len={Length:F6}, " +
+                   $"Cart=({x:F3},{y:F3},{z:F3}))";
+        }
     }
 }

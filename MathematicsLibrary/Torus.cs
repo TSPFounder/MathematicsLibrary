@@ -15,7 +15,7 @@ namespace Mathematics
         {
             Is2D = false;
             ThreeDType = ThreeDPrimitiveTypeEnum.Torus;
-            CenterPoint = new Point();
+            CenterPoint = new Point(0, 0, 0);
         }
 
         // ------------------------------------------------------------------
@@ -35,7 +35,7 @@ namespace Mathematics
         // ------------------------------------------------------------------
         // Location
         // ------------------------------------------------------------------
-        public Point CenterPoint { get; set; } = new Point();
+        public new Point CenterPoint { get; set; } = new Point(0, 0, 0);
 
         // ------------------------------------------------------------------
         // Derived quantities (pure functions; do not mutate state)

@@ -19,15 +19,19 @@ namespace Mathematics
         public double D { get; private set; }
 
         /// <summary>Plane equation A coefficient (Normal.X_Value).</summary>
-        public double A => Normal.X_Value;
+        public double? A => Normal.X_Value;
 
         /// <summary>Plane equation B coefficient (Normal.Y_Value).</summary>
-        public double B => Normal.Y_Value;
+        public double? B => Normal.Y_Value;
 
         /// <summary>Plane equation C coefficient (Normal.Z_Value).</summary>
-        public double C => Normal.Z_Value;
+        public double? C => Normal.Z_Value;
 
-        public Plane() { }
+        public Plane()
+        {
+            AnchorPoint = null!;
+            Normal = null!;
+        }
 
         private Plane(Point anchorPoint, Vector unitNormal)
         {
@@ -128,12 +132,11 @@ namespace Mathematics
             var correction = Scale(Normal, dist);
             var projVec = Subtract(pVec, correction);
 
-            return new Point
-            {
-                X_Value = projVec.X_Value,
-                Y_Value = projVec.Y_Value,
-                Z_Value_Cartesian = projVec.Z_Value
-            };
+            return new Point(
+                projVec.X_Value ?? 0.0,
+                projVec.Y_Value ?? 0.0,
+                projVec.Z_Value ?? 0.0
+            );
         }
 
         /// <summary>
@@ -159,7 +162,12 @@ namespace Mathematics
             if (v.VectorType != Vector.VectorTypeEnum.Cartesian)
                 throw new ArgumentException("Scale expects a Cartesian vector.", nameof(v));
 
-            return Vector.FromCartesian(v.X_Value * s, v.Y_Value * s, v.Z_Value * s);
+            // Use null-coalescing operator to provide default values if any component is null
+            return Vector.FromCartesian(
+                (v.X_Value ?? 0.0) * s,
+                (v.Y_Value ?? 0.0) * s,
+                (v.Z_Value ?? 0.0) * s
+            );
         }
 
         private static Vector Subtract(Vector a, Vector b)
@@ -169,7 +177,12 @@ namespace Mathematics
             if (a.VectorType != Vector.VectorTypeEnum.Cartesian || b.VectorType != Vector.VectorTypeEnum.Cartesian)
                 throw new ArgumentException("Subtract expects Cartesian vectors.");
 
-            return Vector.FromCartesian(a.X_Value - b.X_Value, a.Y_Value - b.Y_Value, a.Z_Value - b.Z_Value);
+            // Use null-coalescing operator to provide default values if any component is null
+            return Vector.FromCartesian(
+                (a.X_Value ?? 0.0) - (b.X_Value ?? 0.0),
+                (a.Y_Value ?? 0.0) - (b.Y_Value ?? 0.0),
+                (a.Z_Value ?? 0.0) - (b.Z_Value ?? 0.0)
+            );
         }
     }
 }

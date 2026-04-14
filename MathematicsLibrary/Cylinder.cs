@@ -13,10 +13,10 @@ namespace Mathematics
         //  ************************************************************
         //  
         //  Identification
-        private String _CylinderID;
+        private string _CylinderID = string.Empty;
         //
         //  Name
-        private String _Name;
+        private string _Name = string.Empty;
         //
         //  Data
         //
@@ -27,8 +27,8 @@ namespace Mathematics
         //  Owned & Owning Objects
         //
         //  Base Circle
-        private Circle _BaseCircle;
-        private Circle _TopCircle;
+        private Circle _BaseCircle = new Circle();
+        private Circle _TopCircle = new Circle();
         //  *****************************************************************************************
 
 
@@ -59,7 +59,7 @@ namespace Mathematics
 
             //
             //  Location
-            this.CenterPoint = new Point();
+            this.CenterPoint = new Point(0, 0, 0);
             this.BaseCircle = new Circle();
             this.TopCircle = new Circle();
         }
@@ -82,7 +82,7 @@ namespace Mathematics
         }
         //
         //  Name
-        public String Name
+        public new String Name
         {
             set => _Name = value;
             get

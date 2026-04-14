@@ -35,7 +35,7 @@ namespace Mathematics
             Quadrilateral3 = new Quadrilateral();
 
             // Location
-            CenterPoint = new Point();
+            CenterPoint = new Point(0, 0, 0);
         }
 
         // ------------------------------------------------------------------
@@ -72,7 +72,7 @@ namespace Mathematics
         // ------------------------------------------------------------------
 
         /// <summary>Geometric center (reference) of the prism.</summary>
-        public Point CenterPoint { get; set; } = new Point();
+        public new Point CenterPoint { get; set; } = new Point(0, 0, 0);
 
         // ------------------------------------------------------------------
         // Validation / Utilities

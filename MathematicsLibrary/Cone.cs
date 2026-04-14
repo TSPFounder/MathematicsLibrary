@@ -23,7 +23,7 @@ namespace Mathematics
             Is2D = false;
             ThreeDType = ThreeDPrimitiveTypeEnum.Cone;
 
-            CenterPoint = new Point();
+            CenterPoint = new Point(0, 0, 0);
             BaseCircle = new Circle();
             Height = 1.0;
         }
