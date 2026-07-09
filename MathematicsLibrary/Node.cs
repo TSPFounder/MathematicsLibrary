@@ -18,10 +18,10 @@ namespace Mathematics
         // -----------------------------
         // Construction
         // -----------------------------
-        public Node() { }
+        public Node() : base(0.0, 0.0, 0.0) { }
 
         public Node(double x, double y, double z = 0.0, bool isInner = false)
-            //: base(x, y, z)
+            : base(x, y, z)
         {
             IsInner = isInner;
         }

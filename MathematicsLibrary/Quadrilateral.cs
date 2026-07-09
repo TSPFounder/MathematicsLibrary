@@ -16,9 +16,8 @@ namespace Mathematics
         // -----------------------------
         public Quadrilateral()
         {
-            // Ensure 2D primitive semantics by default.
             Is2D = true;
-            TwoDType = TwoDPrimitiveTypeEnum.Rectangle; // sensible default; may be reclassified
+            TwoDType = TwoDPrimitiveTypeEnum.Rectangle;
             _vertices.Add(new Point());
             _vertices.Add(new Point());
             _vertices.Add(new Point());
@@ -45,7 +44,10 @@ namespace Mathematics
         // -----------------------------
         // Vertex/edge storage
         // -----------------------------
-        private readonly List<Point> _vertices = new(4);
+        private readonly List<Point> _vertices = new List<Point>
+        {
+            
+        };
         private readonly List<Segment> _edges = new(4);
 
         /// <summary>Ordered vertices V1..V4 (read-only view).</summary>
@@ -89,13 +91,12 @@ namespace Mathematics
         {
             get
             {
-                var p = new Point
-                {
-                    X_Value = (Vertex1.X_Value + Vertex2.X_Value + Vertex3.X_Value + Vertex4.X_Value) / 4.0,
-                    Y_Value = (Vertex1.Y_Value + Vertex2.Y_Value + Vertex3.Y_Value + Vertex4.Y_Value) / 4.0,
-                    Z_Value_Cartesian = (Vertex1.Z_Value_Cartesian + Vertex2.Z_Value_Cartesian +
-                                         Vertex3.Z_Value_Cartesian + Vertex4.Z_Value_Cartesian) / 4.0
-                };
+                Point p = Point.FromCartesian(
+                    (Vertex1.X_Value + Vertex2.X_Value + Vertex3.X_Value + Vertex4.X_Value) / 4.0,
+                    (Vertex1.Y_Value + Vertex2.Y_Value + Vertex3.Y_Value + Vertex4.Y_Value) / 4.0,
+                    (Vertex1.Z_Value_Cartesian + Vertex2.Z_Value_Cartesian +
+                     Vertex3.Z_Value_Cartesian + Vertex4.Z_Value_Cartesian) / 4.0
+                );
                 return p;
             }
         }

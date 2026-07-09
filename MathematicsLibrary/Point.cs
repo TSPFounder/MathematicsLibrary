@@ -22,7 +22,7 @@ namespace Mathematics
         // -----------------------------
         // Constructors
         // -----------------------------
-
+        public Point() { }
         /// <summary>
         /// Creates a Cartesian point at (x, y, z).
         /// </summary>
